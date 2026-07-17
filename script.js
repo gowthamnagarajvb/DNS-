@@ -44,7 +44,7 @@ Sent from Discovery National School Website
 
             // Submit directly to Web3Forms in the background
             const formData = {
-                access_key: '2c466ae7-ab26-4551-af42-e886c4d8743f',
+                access_key: 'e8dbd0e6-ac2d-407d-99dd-125417e08846',
                 subject: subject,
                 from_name: parentName,
                 email: email,
@@ -175,7 +175,7 @@ Sent from Discovery National School Website
 
                 // Submit directly to Web3Forms in the background
                 const formData = {
-                    access_key: '2c466ae7-ab26-4551-af42-e886c4d8743f',
+                    access_key: 'e8dbd0e6-ac2d-407d-99dd-125417e08846',
                     subject: subject,
                     from_name: parentName,
                     email: email,
