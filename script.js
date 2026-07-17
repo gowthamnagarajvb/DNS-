@@ -69,15 +69,15 @@ Sent from Discovery National School Website
             .then(async (response) => {
                 let json = await response.json();
                 if (response.status == 200) {
-                    alert("Thank you! Your admission enquiry has been submitted successfully.");
+                    showCustomAlert("Thank you!", "Your admission enquiry has been submitted successfully.", "success");
                     enquiryForm.reset();
                 } else {
-                    alert(json.message || "Submission failed. Please try again.");
+                    showCustomAlert("Submission Failed", json.message || "Submission failed. Please try again.", "error");
                 }
             })
             .catch(error => {
                 console.error(error);
-                alert("Failed to submit enquiry. Please check your internet connection.");
+                showCustomAlert("Connection Error", "Failed to submit enquiry. Please check your internet connection.", "error");
             })
             .finally(() => {
                 if (submitBtn) {
@@ -200,16 +200,16 @@ Sent from Discovery National School Website
                 .then(async (response) => {
                     let json = await response.json();
                     if (response.status == 200) {
-                        alert("Thank you! Your admission enquiry has been submitted successfully.");
+                        showCustomAlert("Thank you!", "Your admission enquiry has been submitted successfully.", "success");
                         popupForm.reset();
                         popupOverlay.classList.remove('show');
                     } else {
-                        alert(json.message || "Submission failed. Please try again.");
+                        showCustomAlert("Submission Failed", json.message || "Submission failed. Please try again.", "error");
                     }
                 })
                 .catch(error => {
                     console.error(error);
-                    alert("Failed to submit enquiry. Please check your internet connection.");
+                    showCustomAlert("Connection Error", "Failed to submit enquiry. Please check your internet connection.", "error");
                 })
                 .finally(() => {
                     if (submitBtn) {
@@ -240,3 +240,81 @@ Sent from Discovery National School Website
         }, 3000);
     }
 });
+
+// Custom Success/Error Alert Modal Function
+function showCustomAlert(title, message, type = 'success') {
+    // Check if the modal already exists in DOM
+    let modalOverlay = document.getElementById('custom-alert-overlay');
+    if (!modalOverlay) {
+        modalOverlay = document.createElement('div');
+        modalOverlay.id = 'custom-alert-overlay';
+        modalOverlay.className = 'success-modal-overlay';
+        
+        const modalCard = document.createElement('div');
+        modalCard.className = 'success-modal-card';
+        
+        const iconContainer = document.createElement('div');
+        iconContainer.id = 'custom-alert-icon';
+        
+        const titleElement = document.createElement('h3');
+        titleElement.id = 'custom-alert-title';
+        titleElement.className = 'success-modal-title';
+        
+        const descElement = document.createElement('p');
+        descElement.id = 'custom-alert-desc';
+        descElement.className = 'success-modal-desc';
+        
+        const closeButton = document.createElement('button');
+        closeButton.id = 'custom-alert-btn';
+        closeButton.className = 'success-modal-btn';
+        closeButton.textContent = 'Done';
+        
+        modalCard.appendChild(iconContainer);
+        modalCard.appendChild(titleElement);
+        modalCard.appendChild(descElement);
+        modalCard.appendChild(closeButton);
+        modalOverlay.appendChild(modalCard);
+        document.body.appendChild(modalOverlay);
+        
+        // Close event
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            setTimeout(() => {
+                if (modalOverlay.parentNode) {
+                    modalOverlay.parentNode.removeChild(modalOverlay);
+                }
+            }, 300);
+        };
+        
+        closeButton.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+    }
+    
+    // Set content based on type
+    const iconContainer = modalOverlay.querySelector('#custom-alert-icon');
+    const titleElement = modalOverlay.querySelector('#custom-alert-title');
+    const descElement = modalOverlay.querySelector('#custom-alert-desc');
+    const closeButton = modalOverlay.querySelector('#custom-alert-btn');
+    
+    if (type === 'success') {
+        iconContainer.className = 'success-modal-icon success';
+        iconContainer.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        closeButton.style.backgroundColor = 'var(--primary-color)';
+        closeButton.textContent = 'Done';
+    } else {
+        iconContainer.className = 'success-modal-icon error';
+        iconContainer.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+        closeButton.style.backgroundColor = '#dc2626';
+        closeButton.textContent = 'Dismiss';
+    }
+    
+    titleElement.textContent = title;
+    descElement.textContent = message;
+    
+    // Trigger paint and show modal
+    setTimeout(() => {
+        modalOverlay.classList.add('active');
+    }, 10);
+}
