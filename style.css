@@ -335,7 +335,7 @@ ul {
 
 @media (max-width: 768px) {
     .hero {
-        height: 65vh !important;
+        height: 60vw !important; /* Maintain landscape aspect ratio on mobile */
     }
 
     .hero::before {
@@ -346,25 +346,30 @@ ul {
         right: 0 !important;
         transform: none !important;
         border-radius: 0 !important;
-        /* Bottom-heavy gradient overlay to preserve image at top and contrast at bottom */
-        background: linear-gradient(to bottom, rgba(10, 25, 47, 0.15) 0%, rgba(10, 25, 47, 0.7) 55%, rgba(10, 25, 47, 0.92) 100%) !important;
+        background: rgba(0, 0, 0, 0.35) !important; /* Soft overlay to keep image clear and natural */
         backdrop-filter: none !important;
     }
 
-    /* Focus on the girl on the far-left of the image to keep her face visible on mobile */
+    /* Keep backgrounds centered and naturally scaled */
+    .hero-slider .hero-slide {
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+
+    /* Remove specific left offset shifts to maintain full-image centering */
     .hero-slider .slide-h4 {
-        background-position: left center !important;
+        background-position: center center !important;
     }
 
     .hero-content-overlay {
         justify-content: center !important;
-        align-items: flex-end !important; /* Bottom align the content overlay */
-        padding-bottom: 30px !important;
+        align-items: center !important; /* Center overlay text vertically and horizontally */
+        padding-bottom: 0 !important;
         text-align: center !important;
     }
 
     .hero-left-overlay {
-        padding: 0 20px !important;
+        padding: 0 15px !important;
         align-items: center !important;
         display: flex !important;
         flex-direction: column !important;
@@ -373,37 +378,32 @@ ul {
     }
 
     .hero-welcome-small {
-        font-size: 15px !important;
+        font-size: 11px !important;
         color: var(--secondary-color) !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
         letter-spacing: 2px !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 2px !important;
     }
 
     .hero-main-heading {
-        font-size: 28px !important;
+        font-size: 22px !important;
         color: #fff !important;
-        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9) !important;
-        margin-bottom: 10px !important;
-        line-height: 1.2 !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+        margin-bottom: 8px !important;
+        line-height: 1.1 !important;
     }
 
     .hero-sub-text {
-        font-size: 13px !important;
-        color: rgba(255, 255, 255, 0.9) !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-        max-width: 440px !important;
-        margin-bottom: 20px !important;
-        line-height: 1.4 !important;
+        display: none !important; /* Hide long subtext on mobile to show full image clearly */
     }
 
     .btn-enquiry-hero {
         background-color: var(--secondary-color) !important;
         color: #111 !important;
-        padding: 10px 25px !important;
-        font-size: 13px !important;
+        padding: 8px 20px !important;
+        font-size: 11px !important;
         font-weight: 700 !important;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
     }
 }
 
