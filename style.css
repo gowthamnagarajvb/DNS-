@@ -351,9 +351,9 @@ ul {
         backdrop-filter: none !important;
     }
 
-    /* Shift the first slide image to the right (shows left side) to focus on the girl's face */
-    .hero-slider .hero-slide:first-child {
-        background-position: 15% center !important;
+    /* Focus on the girl on the far-left of the image to keep her face visible on mobile */
+    .hero-slider .slide-h4 {
+        background-position: left center !important;
     }
 
     .hero-content-overlay {
