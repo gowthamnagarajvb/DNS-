@@ -2121,3 +2121,112 @@ ul {
 .success-modal-btn:active {
     transform: translateY(0);
 }
+
+/* Mobile Navigation Toggle styling */
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        order: 3; /* Position after logo and enquire button */
+    }
+
+    .brand-name {
+        font-size: 18px !important;
+    }
+
+    .logo-img-placeholder img {
+        height: 40px !important;
+    }
+
+    .navbar {
+        gap: 10px;
+        width: auto;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border-top: 2px solid #edf2f7;
+        border-bottom: 3px solid var(--primary-color);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        gap: 5px;
+        margin: 0;
+        list-style: none;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 15px;
+        width: 100%;
+        border-bottom: 1px solid #f7fafc;
+    }
+
+    .header-social-icons {
+        display: none !important;
+    }
+
+    .btn-enquiry {
+        padding: 8px 16px !important;
+        font-size: 11px !important;
+        order: 2;
+        margin: 0 10px 0 0 !important;
+    }
+}
+
+/* Responsive Popup Modal styling */
+@media (max-width: 600px) {
+    .popup-content {
+        margin: 15px;
+        max-width: calc(100% - 30px);
+    }
+
+    .popup-form-card {
+        padding: 25px 20px;
+    }
+
+    .close-popup {
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        background: #fff;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+}
+
+@media (max-width: 400px) {
+    .popup-form-card {
+        padding: 20px 15px;
+    }
+}

@@ -239,6 +239,31 @@ Sent from Discovery National School Website
             slider.style.transform = `translateX(-${(currentSlide * 100) / totalSlides}%)`;
         }, 3000);
     }
+
+    // Mobile navigation toggle
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
+            }
+        });
+
+        // Close menu when a link is clicked
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.className = 'fa-solid fa-bars';
+            });
+        });
+    }
 });
 
 // Custom Success/Error Alert Modal Function
