@@ -1746,6 +1746,11 @@ ul {
         gap: 50px;
     }
 
+    .about-image-wrapper {
+        position: relative !important;
+        top: auto !important;
+    }
+
     .about-image-mask {
         width: 280px; /* Equal width and height to maintain a perfect circle on tablet/mobile */
         height: 280px;
